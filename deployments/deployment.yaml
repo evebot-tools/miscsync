@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: #APP#
+  name: miscsync
 spec:
   selector:
     matchLabels:
-      app: #APP#
+      app: miscsync
   template:
     metadata:
       labels:
-        app: #APP#
+        app: miscsync
     spec:
       containers:
-      - name: #APP#
-        image: ghcr.io/evebot-tools/#APP#
+      - name: miscsync
+        image: ghcr.io/evebot-tools/miscsync
         # resources:
         #   limits:
         #     memory: "128Mi"

@@ -8,7 +8,7 @@ RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags="-s -w" -o #APP# ./cmd
+RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags="-s -w" -o miscsync ./cmd
 
 FROM gcr.io/distroless/static:nonroot as app
 
@@ -16,6 +16,6 @@ LABEL org.opencontainers.image.source="https://github.com/OWNER/REPO"
 
 USER nonroot:nonroot
 
-COPY --from=builder --chown=nonroot:nonroot /app/#APP# /#APP#
+COPY --from=builder --chown=nonroot:nonroot /app/miscsync /miscsync
 
-ENTRYPOINT ["/#APP#"]
+ENTRYPOINT ["/miscsync"]
